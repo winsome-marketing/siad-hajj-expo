@@ -89,4 +89,17 @@ const allBoxes=[...document.querySelectorAll('input[name="services"]')];
 document.getElementById('generalMeetingCTA').addEventListener('click',()=>{allBoxes.forEach(box=>box.checked=false);statusEl.textContent='';});
 document.querySelectorAll('[data-service]').forEach(link=>link.addEventListener('click',()=>{const matched=allBoxes.find(box=>box.value===link.dataset.service);if(matched){matched.checked=true;statusEl.textContent=link.dataset.service+' added. You can select other services, too.';}}));
 document.getElementById('leadForm').addEventListener('submit',event=>{event.preventDefault();const form=event.currentTarget;if(!form.reportValidity())return;const chosen=allBoxes.filter(box=>box.checked).map(box=>box.value);if(!chosen.length){statusEl.textContent='Please select at least one service.';allBoxes[0].focus();return;}const lookup={'Travel & Booking':'Fast Bookings','Destination Management':'Alhussam Tourism','Transportation':'ZAER','Hotels & Accommodation':'Saja Hotels','Catering & Food Services':'HFS','Hospitality Solutions':'SHS','General Partnership':'SIAD Holding'};const val=id=>document.getElementById(id).value.trim();const content=['Hello SIAD team,','','I would like to request a meeting at Hajj Expo (8–11 November 2026).','','Full name: '+val('name'),'Company: '+val('company'),'Business email: '+val('email'),'Phone / WhatsApp: '+(val('phone')||'Not provided'),'Interested services:',...chosen.map(x=>'- '+x+' ('+lookup[x]+')'),'','Message: '+(val('message')||'Not provided')].join('\n');statusEl.textContent='Your email app should open with the request. Please send the email to finish.';window.location.href='mailto:info@siadholding.com?subject='+encodeURIComponent('Hajj Expo 2026 Meeting Request — '+val('company'))+'&body='+encodeURIComponent(content);});
-</script></body></html>
+</script>
+
+<script>
+  const heroVideo = document.getElementById('heroVideo');
+
+  if (heroVideo) {
+    heroVideo.addEventListener('ended', () => {
+      heroVideo.currentTime = 0;
+      heroVideo.play().catch(() => {});
+    });
+  }
+</script>
+
+</body></html>
