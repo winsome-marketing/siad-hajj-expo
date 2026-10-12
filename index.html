@@ -28,9 +28,35 @@
 .service-link{min-height:42px}
 @media(max-width:920px){.service-row{grid-template-columns:35px minmax(160px,1fr) 195px;gap:12px;min-height:0}.brand{grid-template-columns:82px minmax(0,1fr);min-height:60px}.brand-img{width:82px;height:60px}.service-link{grid-column:2/4}}
 @media(max-width:660px){.service-row{grid-template-columns:34px minmax(0,1fr);gap:9px 12px;padding:16px}.brand{grid-column:2;grid-row:2;grid-template-columns:82px minmax(0,1fr);min-height:57px}.brand-img{width:82px;height:57px;padding:5px}.service-link{grid-column:2;grid-row:3;margin-top:4px}.brand-name{font-size:12px}}
+
+/* V8 — Video hero and updated SIAD logo */
+.hero { position:relative; isolation:isolate; background:#201d19 url('assets/hero.webp') center / cover no-repeat; }
+.hero::before { display:none !important; }
+.hero-video-layer { position:absolute; inset:0; z-index:-2; overflow:hidden; pointer-events:none; }
+.hero-video { display:block; width:100%; height:100%; object-fit:cover; object-position:center; }
+.hero-dark-overlay {
+  position:absolute; inset:0; z-index:-1; pointer-events:none;
+  background:linear-gradient(90deg, rgba(20,18,16,.92) 0%, rgba(20,18,16,.84) 35%, rgba(20,18,16,.65) 68%, rgba(20,18,16,.38) 100%);
+}
+.hero-inner { position:relative; z-index:1; }
+.logo img { display:block; width:auto; max-width:165px; height:50px; object-fit:contain; padding:3px 6px; background:transparent; }
+@media(max-width:660px) {
+  .hero-dark-overlay { background:linear-gradient(90deg, rgba(20,18,16,.91), rgba(20,18,16,.70)); }
+  .logo img { max-width:124px; height:42px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .hero-video { display:none; }
+}
 </style></head><body>
-<header class="header"><div class="shell header-in"><a class="logo" href="#top" aria-label="SIAD Holding home"><img src="https://siadholding.com/wp-content/uploads/2020/02/2019_SIAD_Holding_LOGOS_Horizontal_FullColour_900px.jpg" alt="SIAD Holding logo" onerror="this.parentElement.classList.add('failed')"><span class="alt">SIAD</span></a><nav class="top-links" aria-label="Main navigation"><a href="#ecosystem">Our Ecosystem</a><a href="#legacy">Our Legacy</a><a class="btn" href="#meeting-form">Book a Meeting ↗</a></nav></div></header>
-<main id="top"><section class="hero"><div class="shell hero-inner"><span class="eyebrow">SIAD HOLDING · HAJJ EXPO 2026</span><h1>Together in Makkah,<br><em>Together in Every Step of Hajj.</em></h1><p class="hero-kicker">One Group. Integrated Hajj Solutions.</p><p class="hero-desc">Explore SIAD's specialist brands across travel, destination management, transportation, accommodation, catering and hospitality solutions.</p><div class="hero-actions"><a class="btn" href="#meeting-form">Book a Meeting ↗</a><a class="btn btn-outline" href="#ecosystem">Explore Our Services ↓</a></div><div class="date-pill">8–11 November 2026 · Hajj Expo</div></div></section>
+<header class="header"><div class="shell header-in"><a class="logo" href="#top" aria-label="SIAD Holding home"><img src="https://i.ibb.co/HLCj7V2H/image.png" alt="SIAD Holding logo" onerror="this.parentElement.classList.add('failed')"><span class="alt">SIAD</span></a><nav class="top-links" aria-label="Main navigation"><a href="#ecosystem">Our Ecosystem</a><a href="#legacy">Our Legacy</a><a class="btn" href="#meeting-form">Book a Meeting ↗</a></nav></div></header>
+<main id="top"><section class="hero" aria-label="SIAD Hajj Expo introduction">
+  <div class="hero-video-layer" aria-hidden="true">
+    <video class="hero-video" autoplay muted loop playsinline preload="metadata" poster="assets/hero.webp">
+      <source src="assets/hero-video.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div class="hero-dark-overlay" aria-hidden="true"></div>
+  <div class="shell hero-inner"><span class="eyebrow">SIAD HOLDING · HAJJ EXPO 2026</span><h1>Together in Makkah,<br><em>Together in Every Step of Hajj.</em></h1><p class="hero-kicker">One Group. Integrated Hajj Solutions.</p><p class="hero-desc">Explore SIAD's specialist brands across travel, destination management, transportation, accommodation, catering and hospitality solutions.</p><div class="hero-actions"><a class="btn" href="#meeting-form">Book a Meeting ↗</a><a class="btn btn-outline" href="#ecosystem">Explore Our Services ↓</a></div><div class="date-pill">8–11 November 2026 · Hajj Expo</div></div></section>
 <section class="section" id="ecosystem"><div class="shell"><div class="title-row"><div><span class="eyebrow">THE SIAD ECOSYSTEM</span><h2>Six specialist services.<br>One connected group.</h2></div><p>Discover the expertise behind SIAD's brands — and the services most relevant to your organization.</p></div><div class="service-list"><article class="service-row" id="service-01"><div class="service-number">01</div><div class="service-info"><h3>Travel &amp; Booking</h3><p>Flight tickets, travel reservations and group accommodation bookings.</p></div><div class="brand"><span class="brand-img"><img loading="lazy" src="assets/logo-fast.png" alt="Fast Bookings logo" onerror="this.closest('.brand-img').classList.add('failed')"></span><span class="brand-name">Fast Bookings</span></div><a class="service-link" href="#meeting-form" data-service="Travel &amp; Booking" aria-label="Discuss Travel &amp; Booking">Discuss service <span aria-hidden="true">↗</span></a></article>
 <article class="service-row" id="service-02"><div class="service-number">02</div><div class="service-info"><h3>Destination Management</h3><p>Visa support, airport reception and on-ground travel coordination.</p></div><div class="brand"><span class="brand-img"><img loading="lazy" src="assets/logo-alhussam.png" alt="Alhussam Tourism logo" onerror="this.closest('.brand-img').classList.add('failed')"></span><span class="brand-name">Alhussam Tourism</span></div><a class="service-link" href="#meeting-form" data-service="Destination Management" aria-label="Discuss Destination Management">Discuss service <span aria-hidden="true">↗</span></a></article>
 <article class="service-row" id="service-03"><div class="service-number">03</div><div class="service-info"><h3>Transportation</h3><p>Flexible private transportation for pilgrims, groups and VIP guests.</p></div><div class="brand"><span class="brand-img"><img loading="lazy" src="assets/logo-zaer.png" alt="ZAER logo" onerror="this.closest('.brand-img').classList.add('failed')"></span><span class="brand-name">ZAER</span></div><a class="service-link" href="#meeting-form" data-service="Transportation" aria-label="Discuss Transportation">Discuss service <span aria-hidden="true">↗</span></a></article>
