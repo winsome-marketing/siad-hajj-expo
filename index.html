@@ -52,6 +52,7 @@
 <main id="top"><section class="hero" aria-label="SIAD Hajj Expo introduction">
   <div class="hero-video-layer" aria-hidden="true">
 
+
 <video
   id="heroVideo"
   class="hero-video"
@@ -64,6 +65,7 @@
 >
   <source src="assets/hero-video.mp4" type="video/mp4">
 </video>
+
 
   </div>
   <div class="hero-dark-overlay" aria-hidden="true"></div>
@@ -92,16 +94,38 @@ document.querySelectorAll('[data-service]').forEach(link=>link.addEventListener(
 document.getElementById('leadForm').addEventListener('submit',event=>{event.preventDefault();const form=event.currentTarget;if(!form.reportValidity())return;const chosen=allBoxes.filter(box=>box.checked).map(box=>box.value);if(!chosen.length){statusEl.textContent='Please select at least one service.';allBoxes[0].focus();return;}const lookup={'Travel & Booking':'Fast Bookings','Destination Management':'Alhussam Tourism','Transportation':'ZAER','Hotels & Accommodation':'Saja Hotels','Catering & Food Services':'HFS','Hospitality Solutions':'SHS','General Partnership':'SIAD Holding'};const val=id=>document.getElementById(id).value.trim();const content=['Hello SIAD team,','','I would like to request a meeting at Hajj Expo (8–11 November 2026).','','Full name: '+val('name'),'Company: '+val('company'),'Business email: '+val('email'),'Phone / WhatsApp: '+(val('phone')||'Not provided'),'Interested services:',...chosen.map(x=>'- '+x+' ('+lookup[x]+')'),'','Message: '+(val('message')||'Not provided')].join('\n');statusEl.textContent='Your email app should open with the request. Please send the email to finish.';window.location.href='mailto:info@siadholding.com?subject='+encodeURIComponent('Hajj Expo 2026 Meeting Request — '+val('company'))+'&body='+encodeURIComponent(content);});
 </script>
 
-<script>
-  const heroVideo = document.getElementById('heroVideo');
 
-  if (heroVideo) {
-    heroVideo.addEventListener('ended', () => {
-      heroVideo.currentTime = 0;
-      heroVideo.play().catch(() => {});
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const video = document.getElementById("heroVideo");
+  if (!video) return;
+
+  video.muted = true;
+  video.loop = true;
+
+  function restartVideo() {
+    video.currentTime = 0;
+    video.play().catch(err => {
+      console.warn("Video playback issue:", err);
     });
   }
+
+  video.addEventListener("ended", restartVideo);
+
+  // Fallback if video reaches the end but doesn't loop
+  video.addEventListener("timeupdate", () => {
+    if (
+      Number.isFinite(video.duration) &&
+      video.duration > 0 &&
+      !video.seeking &&
+      video.currentTime >= video.duration - 0.15
+    ) {
+      restartVideo();
+    }
+  });
+});
 </script>
+
 
 
 </body></html>
