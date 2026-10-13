@@ -47,6 +47,28 @@
 @media(prefers-reduced-motion:reduce) {
   .hero-video { display:none; }
 }
+
+/* Services multi-select dropdown — supports service CTA preselection */
+.services-dropdown{position:relative;margin-top:10px}
+.services-dropdown-toggle{display:flex;align-items:center;justify-content:space-between;gap:16px;width:100%;min-height:49px;padding:12px 15px;text-align:left;background:#fff;border:1px solid #d8d2c7;border-radius:5px;color:#3d342a;font:600 13px 'DM Sans',Arial,sans-serif;cursor:pointer}
+.services-dropdown-toggle:hover,.services-dropdown-toggle[aria-expanded="true"]{border-color:var(--gold);background:#fffdf9}
+.services-dropdown-toggle:focus-visible,.dropdown-option:focus-within{outline:2px solid #ab864e;outline-offset:2px}
+.dropdown-chevron{color:#886839;font-size:23px;line-height:1;transition:transform .2s}
+.services-dropdown-toggle[aria-expanded="true"] .dropdown-chevron{transform:rotate(180deg)}
+.services-dropdown-menu{position:absolute;top:calc(100% + 7px);left:0;right:0;z-index:30;background:white;border:1px solid #d9cbb5;border-radius:7px;box-shadow:0 14px 38px #231d1430;overflow:hidden}
+.services-dropdown-menu[hidden]{display:none}
+.services-dropdown-options{padding:7px;max-height:310px;overflow-y:auto}
+.dropdown-option{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:4px;cursor:pointer}
+.dropdown-option:hover,.dropdown-option:has(input:checked){background:#f8f0e1}
+.dropdown-option input{width:17px;height:17px;flex:none;accent-color:#aa874b;cursor:pointer}
+.dropdown-option strong,.dropdown-option small{display:block;line-height:1.4}
+.dropdown-option strong{font-size:12px;color:#26231f}
+.dropdown-option small{font-size:11px;color:#86643c;margin-top:2px}
+.services-dropdown-footer{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;border-top:1px solid #e9e1d5;background:#faf8f4}
+.services-dropdown-footer span{font-size:11px;color:#62584b}
+.services-dropdown-footer button{background:#27231e;color:#fff;border:0;padding:8px 18px;border-radius:3px;font-size:12px;font-weight:700;cursor:pointer}
+.services-helper{font-size:11px!important;color:#766c5e!important;margin:8px 0 0!important}
+@media(max-width:660px){.services-dropdown-menu{position:relative;top:5px}.services-dropdown-options{max-height:260px}}
 </style></head><body>
 <header class="header"><div class="shell header-in"><a class="logo" href="#top" aria-label="SIAD Holding home"><img src="https://i.ibb.co/HLCj7V2H/image.png" alt="SIAD Holding logo" onerror="this.parentElement.classList.add('failed')"><span class="alt">SIAD</span></a><nav class="top-links" aria-label="Main navigation"><a href="#ecosystem">Our Ecosystem</a><a href="#legacy">Our Legacy</a><a class="btn" href="#meeting-form">Book a Meeting ↗</a></nav></div></header>
 <main id="top"><section class="hero" aria-label="SIAD Hajj Expo introduction">
@@ -78,19 +100,29 @@
 <article class="service-row" id="service-06"><div class="service-number">06</div><div class="service-info"><h3>Hospitality Solutions</h3><p>Hospitality consulting, feasibility studies and hotel project management.</p></div><div class="brand"><span class="brand-img"><img loading="lazy" src="assets/logo-shs.png" alt="SHS logo" onerror="this.closest('.brand-img').classList.add('failed')"></span><span class="brand-name">SHS</span></div><a class="service-link" href="#meeting-form" data-service="Hospitality Solutions" aria-label="Discuss Hospitality Solutions">Discuss service <span aria-hidden="true">↗</span></a></article></div><p class="services-foot">Interested in more than one service? Choose as many as you need when requesting a meeting.</p><a class="btn service-form-cta" href="#meeting-form" id="generalMeetingCTA">Request a Meeting <span aria-hidden="true">↗</span></a></div></section>
 <section class="legacy" id="legacy"><div class="shell legacy-grid"><div><span class="eyebrow">OUR LEGACY</span><h2>A legacy of service<br>since 1957.</h2><p>From its early beginnings in serving pilgrims, SIAD has grown into a group of specialized businesses supporting Hajj, Umrah, hospitality and tourism. SIAD Holding was established in 2019 to bring these businesses together.</p></div><div class="stats"><div class="stat"><strong>1957</strong><small>Our roots</small></div><div class="stat"><strong>2019</strong><small>SIAD Holding</small></div><div class="stat"><strong>6</strong><small>Service areas</small></div></div></div></section>
 <section class="meeting" id="meeting"><div class="shell meeting-grid"><div><span class="eyebrow">MEET US AT HAJJ EXPO 2026</span><h2>Let's explore opportunities together.</h2><p class="meeting-desc">Meet the SIAD team to discuss your business needs, discover our specialist services and explore potential partnerships.</p><div class="expo-date"><b>08–11</b><span><strong>November 2026</strong><br>Hajj Expo · Jeddah, Saudi Arabia</span></div><img class="expo-photo" loading="lazy" src="assets/madinah.webp" alt="Saudi Arabia hospitality and pilgrimage destination"><a class="meeting-email" href="mailto:test@siadholding.com">test@siadholding.com ↗</a></div>
-<div class="form-panel" id="meeting-form"><h3>Book a meeting with SIAD</h3><p class="hint">Tell us a little about your organization and select all relevant services.</p><form id="leadForm"><div class="fields"><div class="field"><label for="name">Full name *</label><input id="name" name="name" autocomplete="name" required maxlength="100" placeholder="Your name"></div><div class="field"><label for="company">Company name *</label><input id="company" name="company" autocomplete="organization" required maxlength="140" placeholder="Your organization"></div><div class="field"><label for="email">Business email *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="160" placeholder="name@company.com"></div><div class="field"><label for="phone">Phone / WhatsApp</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="50" placeholder="Optional"></div></div><fieldset class="interests"><legend>Services of interest *</legend><p>Select all that apply. Clicking any “Discuss service” button will add that service here.</p><div class="checks"><label class="check"><input type="checkbox" name="services" value="Travel &amp; Booking"><span class="check-copy"><b>Travel &amp; Booking</b><small>Fast Bookings</small></span></label>
-<label class="check"><input type="checkbox" name="services" value="Destination Management"><span class="check-copy"><b>Destination Management</b><small>Alhussam Tourism</small></span></label>
-<label class="check"><input type="checkbox" name="services" value="Transportation"><span class="check-copy"><b>Transportation</b><small>ZAER</small></span></label>
-<label class="check"><input type="checkbox" name="services" value="Hotels &amp; Accommodation"><span class="check-copy"><b>Hotels &amp; Accommodation</b><small>Saja Hotels</small></span></label>
-<label class="check"><input type="checkbox" name="services" value="Catering &amp; Food Services"><span class="check-copy"><b>Catering &amp; Food Services</b><small>HFS</small></span></label>
-<label class="check"><input type="checkbox" name="services" value="Hospitality Solutions"><span class="check-copy"><b>Hospitality Solutions</b><small>SHS</small></span></label>
-<label class="check"><input type="checkbox" name="services" value="General Partnership"><span class="check-copy"><b>General Partnership</b><small>SIAD Holding</small></span></label></div></fieldset><div class="field"><label for="message">Message (optional)</label><textarea id="message" maxlength="1200" placeholder="What would you like to discuss?"></textarea></div><button type="submit" class="btn submit">Prepare Meeting Request ↗</button><p class="fineprint">Preview: opens a pre-filled email draft, not an automatic submission. Connect a secure form/CRM endpoint before running paid campaigns.</p><p class="status" id="formStatus" aria-live="polite" role="status"></p></form></div></div></section></main>
+<div class="form-panel" id="meeting-form"><h3>Book a meeting with SIAD</h3><p class="hint">Tell us a little about your organization and select all relevant services.</p><form id="leadForm"><div class="fields"><div class="field"><label for="name">Full name *</label><input id="name" name="name" autocomplete="name" required maxlength="100" placeholder="Your name"></div><div class="field"><label for="company">Company name *</label><input id="company" name="company" autocomplete="organization" required maxlength="140" placeholder="Your organization"></div><div class="field"><label for="email">Business email *</label><input id="email" name="email" type="email" autocomplete="email" required maxlength="160" placeholder="name@company.com"></div><div class="field"><label for="phone">Phone / WhatsApp</label><input id="phone" name="phone" type="tel" autocomplete="tel" maxlength="50" placeholder="Optional"></div></div><fieldset class="interests"><legend>Services of interest *</legend>
+<p>Choose one or more services. You can also select a service using its “Discuss service” button.</p>
+<div class="services-dropdown" id="servicesDropdown">
+<button type="button" class="services-dropdown-toggle" id="servicesToggle" aria-expanded="false" aria-controls="servicesOptions" aria-haspopup="true"><span id="servicesSummary">Select services of interest</span><span class="dropdown-chevron" aria-hidden="true">⌄</span></button>
+<div class="services-dropdown-menu" id="servicesOptions" hidden>
+<div class="services-dropdown-options"><label class="dropdown-option"><input type="checkbox" name="services" value="Travel &amp; Booking"><span><strong>Travel &amp; Booking</strong><small>Fast Bookings</small></span></label>
+<label class="dropdown-option"><input type="checkbox" name="services" value="Destination Management"><span><strong>Destination Management</strong><small>Alhussam Tourism</small></span></label>
+<label class="dropdown-option"><input type="checkbox" name="services" value="Transportation"><span><strong>Transportation</strong><small>ZAER</small></span></label>
+<label class="dropdown-option"><input type="checkbox" name="services" value="Hotels &amp; Accommodation"><span><strong>Hotels &amp; Accommodation</strong><small>Saja Hotels</small></span></label>
+<label class="dropdown-option"><input type="checkbox" name="services" value="Catering &amp; Food Services"><span><strong>Catering &amp; Food Services</strong><small>HFS</small></span></label>
+<label class="dropdown-option"><input type="checkbox" name="services" value="Hospitality Solutions"><span><strong>Hospitality Solutions</strong><small>SHS</small></span></label>
+<label class="dropdown-option"><input type="checkbox" name="services" value="General Partnership"><span><strong>General Partnership</strong><small>SIAD Holding</small></span></label></div>
+<div class="services-dropdown-footer"><span id="servicesCount">0 selected</span><button type="button" id="servicesDone">Done</button></div>
+</div>
+</div>
+<p class="services-helper" id="servicesHelper" aria-live="polite">Select at least one service.</p>
+</fieldset><div class="field"><label for="message">Message (optional)</label><textarea id="message" maxlength="1200" placeholder="What would you like to discuss?"></textarea></div><button type="submit" class="btn submit">Prepare Meeting Request ↗</button><p class="fineprint">Preview: opens a pre-filled email draft, not an automatic submission. Connect a secure form/CRM endpoint before running paid campaigns.</p><p class="status" id="formStatus" aria-live="polite" role="status"></p></form></div></div></section></main>
 <footer><div class="shell footer-in"><span>© 2026 SIAD Holding. Together in Every Step of Hajj.</span><span><a href="https://siadholding.com" target="_blank" rel="noopener noreferrer">Official website ↗</a></span></div></footer><div class="mobile-cta"><a href="#meeting-form" class="btn">Book a Meeting ↗</a></div>
 <script>
 const statusEl=document.getElementById('formStatus');
 const allBoxes=[...document.querySelectorAll('input[name="services"]')];
-document.getElementById('generalMeetingCTA').addEventListener('click',()=>{allBoxes.forEach(box=>box.checked=false);statusEl.textContent='';});
-document.querySelectorAll('[data-service]').forEach(link=>link.addEventListener('click',()=>{const matched=allBoxes.find(box=>box.value===link.dataset.service);if(matched){matched.checked=true;statusEl.textContent=link.dataset.service+' added. You can select other services, too.';}}));
+document.getElementById('generalMeetingCTA').addEventListener('click',()=>{allBoxes.forEach(box=>box.checked=false);statusEl.textContent='';updateServicesSummary();});
+document.querySelectorAll('[data-service]').forEach(link=>link.addEventListener('click',()=>{const matched=allBoxes.find(box=>box.value===link.dataset.service);if(matched){matched.checked=true;statusEl.textContent=link.dataset.service+' added. You can select other services, too.';updateServicesSummary();}}));
 document.getElementById('leadForm').addEventListener('submit',event=>{event.preventDefault();const form=event.currentTarget;if(!form.reportValidity())return;const chosen=allBoxes.filter(box=>box.checked).map(box=>box.value);if(!chosen.length){statusEl.textContent='Please select at least one service.';allBoxes[0].focus();return;}const lookup={'Travel & Booking':'Fast Bookings','Destination Management':'Alhussam Tourism','Transportation':'ZAER','Hotels & Accommodation':'Saja Hotels','Catering & Food Services':'HFS','Hospitality Solutions':'SHS','General Partnership':'SIAD Holding'};const val=id=>document.getElementById(id).value.trim();const content=['Hello SIAD team,','','I would like to request a meeting at Hajj Expo (8–11 November 2026).','','Full name: '+val('name'),'Company: '+val('company'),'Business email: '+val('email'),'Phone / WhatsApp: '+(val('phone')||'Not provided'),'Interested services:',...chosen.map(x=>'- '+x+' ('+lookup[x]+')'),'','Message: '+(val('message')||'Not provided')].join('\n');statusEl.textContent='Your email app should open with the request. Please send the email to finish.';window.location.href='mailto:test@siadholding.com?subject='+encodeURIComponent('Hajj Expo 2026 Meeting Request — '+val('company'))+'&body='+encodeURIComponent(content);});
 </script>
 
@@ -128,4 +160,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+
+<script>
+(function(){
+ const root=document.getElementById('servicesDropdown');
+ const toggle=document.getElementById('servicesToggle');
+ const menu=document.getElementById('servicesOptions');
+ const summary=document.getElementById('servicesSummary');
+ const count=document.getElementById('servicesCount');
+ const helper=document.getElementById('servicesHelper');
+ const boxes=[...document.querySelectorAll('input[name="services"]')];
+ function setOpen(open){menu.hidden=!open;toggle.setAttribute('aria-expanded',String(open));}
+ window.updateServicesSummary=function(){
+   const selected=boxes.filter(x=>x.checked).map(x=>x.value);
+   summary.textContent=selected.length===0?'Select services of interest':selected.length===1?selected[0]:selected.length+' services selected';
+   count.textContent=selected.length+' selected';
+   helper.textContent=selected.length?selected.join(' · '):'Select at least one service.';
+ };
+ toggle.addEventListener('click',()=>setOpen(menu.hidden));
+ document.getElementById('servicesDone').addEventListener('click',()=>setOpen(false));
+ boxes.forEach(box=>box.addEventListener('change',window.updateServicesSummary));
+ document.addEventListener('click',e=>{if(!root.contains(e.target))setOpen(false);});
+ document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){setOpen(false);toggle.focus();}});
+ window.updateServicesSummary();
+})();
+</script>
 </body></html>
