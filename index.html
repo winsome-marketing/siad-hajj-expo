@@ -140,7 +140,20 @@
 @media(max-width:360px){.service-row .brand-dual .brand-img{width:90px!important;height:59px!important}}
 
 /* Gold Arabic Mövenpick mark needs dark contrast; brand logos remain uncropped. */
-.brand-img[title="Mövenpick Anwar Al Madinah"]{background:#24201c!important;border-color:#24201c!important}
+.brand-img[title="Mövenpick Anwar Al Madinah"] {
+  background: #24201c !important;
+  border-color: #24201c !important;
+  padding: 2px !important;
+  width: 120px !important;
+  height: 70px !important;
+}
+
+.brand-img[title="Mövenpick Anwar Al Madinah"] img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  transform: scale(1.25);
+}
 </style><style>
 /* V4: intentional logo hierarchy / aligned booking actions */
 #ecosystem .service-row {
